@@ -5,52 +5,94 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sports App</title>
+<title>Sports TV</title>
+
+<link rel="manifest" href="manifest.json">
 
 <style>
 
 body{
 margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#0b0b0b;
+font-family:Arial;
+background:#0f0f0f;
 color:white;
+display:flex;
+height:100vh;
 }
 
-header{
-background:#111;
+/* SIDEBAR */
+
+.sidebar{
+width:250px;
+background:#141414;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
 padding:15px;
-text-align:center;
-font-size:22px;
+font-size:20px;
 font-weight:bold;
+text-align:center;
+border-bottom:1px solid #333;
+}
+
+.search{
+padding:10px;
+border:none;
+outline:none;
+margin:10px;
+border-radius:5px;
 }
 
 .channels{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:10px;
+flex:1;
+overflow-y:auto;
 padding:10px;
 }
 
-button{
-padding:12px;
-background:#1f1f1f;
-border:none;
-color:white;
+.channel{
+padding:10px;
+margin-bottom:8px;
+background:#1d1d1d;
 border-radius:6px;
 cursor:pointer;
-font-size:14px;
+}
+
+.channel:hover{
+background:#ff3030;
+}
+
+/* PLAYER */
+
+.player-area{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+.topbar{
+background:#181818;
+padding:10px;
+display:flex;
+gap:10px;
+}
+
+button{
+background:#ff3030;
+border:none;
+color:white;
+padding:8px 14px;
+border-radius:5px;
+cursor:pointer;
 }
 
 button:hover{
-background:#333;
+background:#ff0000;
 }
 
 .player{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-height:45vh;
+flex:1;
 background:black;
 }
 
@@ -66,51 +108,46 @@ border:none;
 
 <body>
 
-<header>
+<div class="sidebar">
+
+<div class="logo">
 SPORTS TV
-</header>
+</div>
 
-<div class="channels">
+<input class="search" placeholder="Buscar canal..." onkeyup="buscar(this.value)">
 
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/espn.html')">ESPN</button>
+<div class="channels" id="channels">
 
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/espn2.html')">ESPN 2</button>
+</div>
 
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/espn3.html')">ESPN 3</button>
+</div>
 
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/espnpremium.html')">ESPN Premium</button>
+<div class="player-area">
 
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/tntsports.html')">TNT Sports</button>
+<div class="topbar">
 
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/tudn.html')">TUDN</button>
+<button onclick="fullscreen()">Full Screen</button>
 
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/foxsports2.html')">Fox Sports 2</button>
+<button onclick="reload()">Recargar</button>
 
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/foxsports3.html')">Fox Sports 3</button>
-
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/tycsports.html')">TyC Sports</button>
-
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/directvsports.html')">DirecTV Sports</button>
-
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/directvsports2.html')">DirecTV Sports 2</button>
-
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/winsports.html')">Win Sports</button>
-
-<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/winsportsplus.html')">Win Sports+</button>
+<button onclick="share()">Compartir</button>
 
 </div>
 
 <div class="player">
-<iframe id="player" allowfullscreen allow="autoplay"></iframe>
+
+<iframe
+id="player"
+sandbox="allow-scripts allow-same-origin allow-presentation"
+allowfullscreen
+referrerpolicy="no-referrer">
+</iframe>
+
 </div>
 
-<script>
+</div>
 
-function play(url){
-document.getElementById("player").src=url;
-}
-
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
