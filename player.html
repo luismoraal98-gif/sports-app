@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body style="margin:0;background:black;">
+
+<div id="player"></div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const channel = urlParams.get('ch');
+
+let video = "";
+
+if(channel == 1){
+video = "https://www.youtube.com/embed/dQw4w9WgXcQ";
+}
+
+if(channel == 2){
+video = "https://www.youtube.com/embed/tgbNymZ7vqY";
+}
+
+if(channel == 3){
+video = "https://www.youtube.com/embed/dQw4w9WgXcQ";
+}
+
+if(channel == 4){
+video = "https://www.youtube.com/embed/tgbNymZ7vqY";
+}
+
+document.getElementById("player").innerHTML =
+`<iframe src="${video}" width="100%" height="100%" allowfullscreen></iframe>`;
+</script>
+
+</body>
+</html>

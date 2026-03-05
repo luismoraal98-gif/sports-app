@@ -1,0 +1,8 @@
+{
+"name":"Sports Live",
+"short_name":"Sports",
+"start_url":"index.html",
+"display":"standalone",
+"background_color":"#000000",
+"theme_color":"#e50914"
+}
