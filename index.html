@@ -2,36 +2,116 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sports Live</title>
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
+<title>Sports App</title>
+
+<style>
+
+body{
+margin:0;
+background:#0b0b0b;
+font-family:Arial;
+color:white;
+}
+
+header{
+background:#111;
+padding:15px;
+text-align:center;
+font-size:22px;
+}
+
+.channels{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+padding:10px;
+}
+
+button{
+padding:12px;
+background:#1f1f1f;
+color:white;
+border:none;
+border-radius:8px;
+font-size:14px;
+}
+
+button:hover{
+background:#ff3b3b;
+}
+
+.player{
+position:fixed;
+bottom:0;
+width:100%;
+height:40%;
+background:black;
+}
+
+iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+</style>
 </head>
+
 <body>
 
-<header>
-<div class="logo">Sports Live</div>
-</header>
+<header>⚽ Sports TV</header>
 
-<section>
-<h2>Canales en vivo</h2>
+<div class="channels">
 
-<div class="grid">
-<a href="player.html?ch=1" class="card">Canal 1</a>
-<a href="player.html?ch=2" class="card">Canal 2</a>
-<a href="player.html?ch=3" class="card">Canal 3</a>
-<a href="player.html?ch=4" class="card">Canal 4</a>
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/espn.html')">ESPN</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/espn2.html')">ESPN 2</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/espn3.html')">ESPN 3</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/espnpremium.html')">ESPN Premium</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/foxsports2.html')">Fox Sports 2</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/foxsports3.html')">Fox Sports 3</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/tntsports.html')">TNT Sports</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/tntsportschile.html')">TNT Chile</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/tudn.html')">TUDN</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/tycsports.html')">TyC Sports</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/directvsports.html')">DirecTV Sports</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/directvsports2.html')">DirecTV Sports 2</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/winsports.html')">Win Sports</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/winsportsplus.html')">Win Sports +</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/daznf1.html')">DAZN F1</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/daznlaliga.html')">DAZN La Liga</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/beinsportsxtra.html')">Bein Sports</button>
+
+<button onclick="play('https://embed.ksdjugfsddeports.com/embed2/skysportsmexico.html')">Sky Sports MX</button>
+
 </div>
 
-</section>
+<div class="player">
+<iframe id="player"></iframe>
+</div>
 
-<nav class="menu">
-<a href="#">🏠</a>
-<a href="#">📺</a>
-<a href="#">⭐</a>
-</nav>
+<script>
 
-<script src="app.js"></script>
+function play(url){
+document.getElementById("player").src=url
+}
+
+</script>
 
 </body>
 </html>
